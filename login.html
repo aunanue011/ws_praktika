@@ -5,95 +5,16 @@
 <meta charset="UTF-8">	
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/formularioak.css">
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 <title>Argazki Albuma</title>
-<style>
-body {
-	background: url("img/loginAtzekaldea.jpg" ) no-repeat fixed center center;
-    background-size: cover;
-    font-family: Montserrat;
-}
-
-.logo {
-    width: 213px;
-    height: 36px;
-    margin: 30px auto;
-}
-
-.login-block {
-    width: 320px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    border-top: 5px solid #ff656c;
-    margin: 0 auto;
-}
-
-.login-block h1 {
-    text-align: center;
-    color: #000;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.login-block input {
-    width: 100%;
-    height: 42px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    font-size: 14px;
-    font-family: Montserrat;
-    padding: 0 20px 0 50px;
-    outline: none;
-}
-
-.login-block input#username {
-    background-size: 16px 80px;
-}
-
-.login-block input#username:focus {
-    background-size: 16px 80px;
-}
-
-.login-block input#password {
-    background-size: 16px 80px;
-}
-
-.login-block input#password:focus {
-    background-size: 16px 80px;
-}
-
-.login-block input:active, .login-block input:focus {
-    border: 1px solid #ff656c;
-}
-
-.login-block button {
-    width: 100%;
-    height: 40px;
-    background: #ff656c;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #e15960;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: Montserrat;
-    outline: none;
-    cursor: pointer;
-}
-
-.login-block button:hover {
-    background: #ff7b81;
-}
-
-</style>
+    <style>
+        body {
+            background: url("img/loginAtzekaldea.jpg" ) no-repeat fixed center center;
+        }
+    </style>
 </head>
 
 <body>	
@@ -105,7 +26,7 @@ body {
 						<li><a href="argazkiaIgo.php">Argazkia Igo</a></li>
 					</ul>
 					<a href="#" class="login_btn">Logeatu</a>
-					<a href="#" class="login_btn">Erregistratu</a>
+					<a href="erregistratu.html" class="login_btn">Erregistratu</a>
 
 				</nav>
 			</div>
@@ -114,8 +35,8 @@ body {
 <div class="logo"></div>
 <div class="login-block">
     <h1>Login</h1>
-    <input type="text" value="" placeholder="Posta Helbidea" id="username" />
-    <input type="password" value="" placeholder="Pasahitza" id="password" />
+    <input type="text"placeholder="Posta Helbidea" id="username" />
+    <input type="password"  placeholder="Pasahitza" id="password" />
     <button>Logeatu</button>
 </div>
 </body>
