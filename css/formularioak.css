@@ -75,3 +75,6 @@ body {
 .login-block button:hover, input[type=submit]:hover {
     background: #8A0829;
 }
+ a:hover{
+    text-decoration: underline;
+}
