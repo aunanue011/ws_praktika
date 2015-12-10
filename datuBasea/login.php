@@ -29,7 +29,7 @@
                 timer: 3000
             },
             function(){
-                window.location.href = '../index.html';
+                window.location.href = '../index.php';
             });
 
     ");

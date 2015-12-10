@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Argazki Bilduma</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+
+<section class="hero">
+    <header>
+        <div class="wrapper">
+            <a href="#" class="hamburger"></a>
+            <nav>
+                <ul>
+                    <li><a href="argazkiaIgo.php">Argazkia Igo</a></li>
+                </ul>
+                <?php
+session_start();
+                if (isset($_SESSION['posta']) && $_SESSION['posta'] == true)
+                {
+                    echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena']." (". $_SESSION['posta'] . ")</a>");
+                } else
+                {
+                    echo("<a href='erregistratu.html' class=\"login_btn\"> Erregistratu</a>");
+                    echo("<a href='login.html' class=\"login_btn\"> Login egin</a>");
+
+                }
+                ?>
+
+            </nav>
+        </div>
+    </header>
+
+    <section class="caption">
+        <h2 class="caption">Argazki Bilduma</h2>
+
+        <h3 class="properties"></h3>
+    </section>
+</section>
+
+
+<section class="search">
+    <div class="wrapper">
+        <form action="#" method="post">
+            <input type="text" id="search" name="search" placeholder="Tag-en Bidez argazkiak bilatu"
+                   autocomplete="off"/>
+            <input type="submit" id="submit_search" name="submit_search"/>
+        </form>
+    </div>
+
+</section>
+
+
+<section class="listings">
+    <div class="wrapper">
+        <ul class="properties_list">
+            <li>
+                <a href="#">
+                    <img src="img/property_1.jpg" alt="" title="" class="property_img"/>
+                </a>
+
+                <div class="property_details">
+                    <h1>
+                        <a href="#">El album de la gorrina</a>
+                    </h1>
+
+                    <h2>102 argazki</h2>
+                </div>
+            </li>
+
+        </ul>
+        <div class="more_listing">
+            <a href="#" class="more_listing_btn">Argazki Gehiago</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrapper footer">
+    </div>
+</footer>
+
+</body>
+</html>
