@@ -1,3 +1,11 @@
+<?php
+require "sesioak/userSession.php";
+if (konprobatuSaioa("login.php", true)) {
+
+}else{
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,15 +61,19 @@
 		<header style="background: #8a0829">
 			<div class="wrapper">
 				<nav style="float: left;">
-					<a href="index.html" class="login_btn"> Hasiera</a>
+					<a href="index.php" class="login_btn"> Hasiera</a>
 				</nav>
 			</div>
 			<div class="wrapper">
 				<a href="#" class="hamburger"></a>
 				<nav>
 
-					<a href="login.html" class="login_btn">Logeatu</a>
-					<a href="erregistratu.html" class="login_btn">Erregistratu</a>
+					<?php
+					if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
+
+						echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena'] . " (" . $_SESSION['posta'] . ")</a>");
+					}
+					?>
 
 				</nav>
 			</div>
@@ -70,7 +82,7 @@
 		<div class="logo"></div>
 		<div class="login-block">
             <h1>Argazkia Igo</h1>
-			<form action="igo.php" method="post" enctype="multipart/form-data">
+			<form action="kudeaketa/igo.php" method="post" enctype="multipart/form-data">
                 <input type="file" accept="image/*" id="argazki" name="argazki" hidden onChange="argazkiaAurreikusi(this)"/>
 				<img id="aurreikusi" onerror="irudiaKargatzen(this); src="#"/ style="display: none" ><br/>
                 <label id="argazki-label" for="argazki">Argazkia Aukeratu</label>
@@ -78,6 +90,8 @@
 				<br/><br/><br/>
                 <label for="deskribapena">Deskribapena</label>
                 <textarea name="deskribapena" id="deskribapena"></textarea><br/><br/>
+                <label for="tag">Tag-ak (banatu tag bakoitza , ikurrarekin).</label>
+                <textarea name="tag" id="tag"></textarea><br/><br/>
 				<input type="submit" id="bidali" name="bidali" value="Igo" />
 			</form>
 		</div>

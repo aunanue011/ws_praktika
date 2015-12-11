@@ -5,7 +5,7 @@
 <script language="JavaScript">
     <?php
     require 'konexioa.php';
-    session_start();
+    if(!isset($_SESSION)) {      session_start(); }
 
     $email = $_POST['username'];
     $pasahitzEncriptatua = sha1($_POST['password']);
@@ -43,7 +43,7 @@
                 timer: 3000
             },
             function(){
-                window.location.href = '../login.html';
+                window.location.href = '../login.php';
             });
 
     ");

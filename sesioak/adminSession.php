@@ -1,13 +1,13 @@
 <?php
 
-function konprobatuSaioa()
+function konprobatuSaioa($nora)
 {
     echo("<link rel=\"stylesheet\" type=\"text/css\" href=\"js/abixuak/dist/sweetalert2.css\"/>
 <script src=\"js/jquery.js\"></script>
 <script src=\"js/abixuak/dist/sweetalert2.min.js\"></script>
 <body bgcolor=\"#8A0829\">
 <script language=\"JavaScript\">");
-    session_start();
+    if(!isset($_SESSION)) {      session_start(); }
 
     if (!isset($_SESSION['posta']))
     {
@@ -31,10 +31,10 @@ function konprobatuSaioa()
                     type: \"error\"
                 },
                 function(){
-                    window.location.href = 'loginEgin.php';
+                    window.location.href = '$nora';
                 });
                     window.onclick = function(){
-                        window.location.href = 'loginEgin.php';
+                        window.location.href = '$nora';
                         }
       ");
             echo("</script>

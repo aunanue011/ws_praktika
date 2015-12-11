@@ -17,18 +17,19 @@
         <div class="wrapper">
             <a href="#" class="hamburger"></a>
             <nav>
-                <ul>
-                    <li><a href="argazkiaIgo.php">Argazkia Igo</a></li>
-                </ul>
+
                 <?php
-session_start();
-                if (isset($_SESSION['posta']) && $_SESSION['posta'] == true)
-                {
-                    echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena']." (". $_SESSION['posta'] . ")</a>");
-                } else
-                {
-                    echo("<a href='erregistratu.html' class=\"login_btn\"> Erregistratu</a>");
-                    echo("<a href='login.html' class=\"login_btn\"> Login egin</a>");
+                if(!isset($_SESSION)) {      session_start(); }
+                if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
+                    echo("
+                           <ul>
+                            <li><a href=\"argazkiaIgo.php\">Argazkia Igo</a></li>
+                           </ul>
+                         ");
+                    echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena'] . " (" . $_SESSION['posta'] . ")</a>");
+                } else {
+                    echo("<a href='erregistratu.php' class=\"login_btn\"> Erregistratu</a>");
+                    echo("<a href='login.php' class=\"login_btn\"> Login</a>");
 
                 }
                 ?>

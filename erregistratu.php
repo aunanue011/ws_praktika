@@ -1,3 +1,10 @@
+<?php
+require "sesioak/userSession.php";
+if (konprobatuSaioa("index.php", false)) {
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="eu">
 <head>
@@ -19,16 +26,27 @@
 <header style="background: #8A0829">
     <div class="wrapper">
         <nav style="float: left;">
-            <a href="index.html" class="login_btn"> Hasiera</a>
+            <a href="index.php" class="login_btn"> Hasiera</a>
         </nav>
     </div>
     <div class="wrapper">
         <a href="#" class="hamburger"></a>
         <nav>
-            <ul>
-                <li><a href="argazkiaIgo.php">Argazkia Igo</a></li>
-            </ul>
-            <a href="login.html" class="login_btn">Logeatu</a>
+
+            <?php
+            if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
+                echo("
+                           <ul>
+                            <li><a href=\"argazkiaIgo.php\">Argazkia Igo</a></li>
+                           </ul>
+                         ");
+                echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena'] . " (" . $_SESSION['posta'] . ")</a>");
+            } else {
+                echo("<a href='login.php' class=\"login_btn\"> Login</a>");
+
+            }
+            ?>
+
         </nav>
     </div>
 </header>

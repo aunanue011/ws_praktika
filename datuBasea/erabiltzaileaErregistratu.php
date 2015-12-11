@@ -31,7 +31,7 @@ echo "  swal({
 
         },
         function(){
-            window.location.href = '../erregistratu.html';
+            window.location.href = '../erregistratu.php';
         });";
 }else
 {

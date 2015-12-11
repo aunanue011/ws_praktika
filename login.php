@@ -1,3 +1,10 @@
+<?php
+require "sesioak/userSession.php";
+if (konprobatuSaioa("index.php", false)) {
+	header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,17 +28,26 @@
 	<header style="background: #8A0829">
 		<div class="wrapper">
 			<nav style="float: left;">
-				<a href="index.html" class="login_btn"> Hasiera</a>
+				<a href="index.php" class="login_btn"> Hasiera</a>
 			</nav>
 		</div>
 			<div class="wrapper">
 				<a href="#" class="hamburger"></a>
 				<nav>
-					<ul>
-						<li>
-							<a href="argazkiaIgo.php">Argazkia Igo</a></li>
-					</ul>
-					<a href="erregistratu.html" class="login_btn">Erregistratu</a>
+
+					<?php
+					if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
+						echo("
+                           <ul>
+                            <li><a href=\"argazkiaIgo.php\">Argazkia Igo</a></li>
+                           </ul>
+                         ");
+						echo("<a href=\"datuBasea/logout.php\" class=\"login_btn\" >" . $_SESSION['izena'] . " (" . $_SESSION['posta'] . ")</a>");
+					} else {
+						echo("<a href='erregistratu.php' class=\"login_btn\"> Erregistratu</a>");
+
+					}
+					?>
 
 				</nav>
 			</div>
@@ -40,7 +56,7 @@
 <div class="logo"></div>
 <div class="login-block">
     <h1>Login</h1>
-	<form action="datuBasea/login.php" method="post" enctype="multipart/form-data">
+	<form action="datuBasea/loginEgin.php" method="post" enctype="multipart/form-data">
     <input type="text"placeholder="Posta Helbidea" id="username" name="username"/>
     <input type="password"  placeholder="Pasahitza" id="password" name="password"/>
     <input type="submit" value="Logeatu" />
