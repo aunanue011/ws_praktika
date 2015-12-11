@@ -28,7 +28,7 @@ if (!file_exists("$target_dir")) {
 }
 $target_file = $target_dir .$new_image_name;
 
-if ($_FILES["argazki"]["size"] > 500000) {
+if ($_FILES["argazki"]["size"] > 5000000) {
 //    echo "Kapullo de los cojones!. Te he pedido una foto normal, no un puto mural de mil pares de cojones. O empequeñeces la foyo, o la subes en el puto flicker ese. Gilipollas.";
 
     echo 'Fitxategia handiaegia da. Tamaina muga 5MB da.';
@@ -42,7 +42,14 @@ if ($uploadOk == 0) {
     echo "Zure fitxategia ezin izan da igo.";
 } else {
     if (move_uploaded_file($_FILES["argazki"]["tmp_name"], $target_file)) {
-        echo "Zure fitxategia zuzen igo da.";
+        $sql = "INSERT INTO argazkia(izena, erabID, tag, deskribapena)
+        VALUES ('$new_image_name', '$_SESSION[posta]', '$_POST[tag]','$_POST[deskribapena]');";
+        if (mysqli_query($konexioa, $sql))
+        {
+            echo "Zure fitxategia zuzen igo da.";
+
+
+        }
     } else {
         echo "Erroreren bat gertatu da fitxategia igo bitartean.";
     }

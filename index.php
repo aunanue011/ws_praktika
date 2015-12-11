@@ -19,7 +19,9 @@
             <nav>
 
                 <?php
-                if(!isset($_SESSION)) {      session_start(); }
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 if (isset($_SESSION['posta']) && $_SESSION['posta'] == true) {
                     echo("
                            <ul>
@@ -60,22 +62,40 @@
 
 <section class="listings">
     <div class="wrapper">
-        <ul class="properties_list">
-            <li>
-                <a href="#">
-                    <img src="img/property_1.jpg" alt="" title="" class="property_img"/>
-                </a>
+        <!-- <ul class="properties_list">
+             <li>
+                 <a href="#">
+                     <img src="img/property_1.jpg" alt="" title="" class="property_img"/>
+                 </a>
 
-                <div class="property_details">
-                    <h1>
-                        <a href="#">El album de la gorrina</a>
-                    </h1>
+                 <div class="property_details">
+                     <h1>
+                         <a href="#">El album de la gorrina</a>
+                     </h1>
 
-                    <h2>102 argazki</h2>
-                </div>
-            </li>
+                     <h2>102 argazki</h2>
+                 </div>
+             </li>
 
-        </ul>
+         </ul>
+         -->
+        <?php
+        require "datuBasea/konexioa.php";
+
+        $sql = "SELECT * FROM (
+                  SELECT * FROM argazkia ORDER BY argID DESC LIMIT 9
+                  ) sub
+                  ORDER BY argID DESC;";
+        $result = mysqli_query($konexioa, $sql);
+        if ($result) {
+            echo "<ul class=\"properties_list\">";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo("<li><img class=\"property_img\" src=\"argazkiak\\$row[erabID]\\$row[izena]\" /></li> ");
+            }
+            echo "</ul>";
+        }
+        require "datuBasea/konexioaItxi.php";
+        ?>
         <div class="more_listing">
             <a href="#" class="more_listing_btn">Argazki Gehiago</a>
         </div>

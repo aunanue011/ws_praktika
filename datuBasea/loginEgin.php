@@ -14,7 +14,7 @@
     $result = mysqli_query($konexioa, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    if ($row != 0 && $pasahitzEncriptatua == $row['pasahitza'])
+    if ($row != 0 && $pasahitzEncriptatua == $row['pasahitza']&& $email!="")
     {
         $_SESSION['mota']=$row['mota'];
         $_SESSION['izena']=$row['izenabizen'];
